@@ -16,7 +16,10 @@ var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://127.0.0.1:27017/local_library';
+
+var dev_db_url = 'mongodb+srv://mmakokha:Mmakokha2016@cluster0-whcdl.mongodb.net/local_library?ssl=true&retryWrites=true';
+var mongoDB =  process.env.MONGODB_URI || dev_db_url;
+//var mongoDB = 'mongodb://127.0.0.1:27017/local_library';
 mongoose.connect(mongoDB,{ useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
